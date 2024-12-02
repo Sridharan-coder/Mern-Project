@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=KoHo:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+.slick-prev,
+.slick-next {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  font-size: 70px !important;
+  color: rgb(0, 0, 0) !important;
+}
+
+.slick-prev {
+  left: -80px !important;
+}
+
+.slick-next {
+  right: -80px !important;
+}
+
+/* 
+#phoneNumber::-webkit-outer-spin-button,
+#phoneNUmber::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+} */
+
+#phoneNumber::-webkit-outer-spin-button,
+#phoneNumber::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.visualSpread{
+  border-right: 5px solid rgb(237, 114, 0);
+}
