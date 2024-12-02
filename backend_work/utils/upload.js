@@ -27,11 +27,11 @@ const fileFilter = (req, file, cb) => {
     
     const allowedFileTypes = /pdf|xlsx|xls|jpg|jpeg|png/;
     const allowedMimeTypes = [
-        'application/pdf', // PDF
-        'application/vnd.ms-excel', // Legacy Excel (.xls)
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', // Modern Excel (.xlsx)
-        'image/jpeg', // JPEG images
-        'image/png', // PNG images
+        'application/pdf', 
+        'application/vnd.ms-excel', 
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 
+        'image/jpeg', 
+        'image/png',
       ];
     const extname = allowedFileTypes.test(path.extname(file.originalname).toLowerCase());
     const mimetype = allowedMimeTypes.includes(file.mimetype);
@@ -48,8 +48,8 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({
     storage: storage,
-    limits: { fileSize: 10000000 }, // 10 MB size limit
+    limits: { fileSize: 10000000 }, 
     fileFilter: fileFilter
-}).single('file'); // Handle single file upload
+}).single('file'); 
 
 module.exports = upload;

@@ -25,7 +25,7 @@ const getAllUser = async (req, res, next) => {
   try {
     const count = Number(req.params["count"]);
     const users = await getAllUsersData(count * 10);
-    res.header("Access-Control-Allow-Origin: *"); // CORS header
+    res.header("Access-Control-Allow-Origin: *"); 
     res.status(200).json({
       success: true,
       msg: "Users fetched successfully",
@@ -54,7 +54,7 @@ const getAllImage = async (req, res, next) => {
           .json({ success: false, message: "Error reading files" });
       }
 
-      //   // Generate URLs for each file
+      
       const fileURLs = files.map((file) => ({
         filesPath: `${req.protocol}://${req.get("host")}/uploads/${file}`,
       }));
@@ -72,20 +72,6 @@ const getAllImage = async (req, res, next) => {
     next(error);
   }
 
-  // Read all files from the directory
-  // fs.readdir(directoryPath, (err, files) => {
-  //   if (err) {
-  //     console.error("Unable to scan directory:", err);
-  //     return res.status(500).json({ success: false, message: "Error reading files" });
-  //   }
-
-  // Generate URLs for each file
-  //   const fileURLs = files.map((file) => ({
-  //     filesPath: `${req.protocol}://${req.get("host")}/uploads/${file}`,
-  //   }));
-
-  //   res.json({ success: true, files: fileURLs });
-  // });
 };
 
 const getUser = async (req, res, next) => {
@@ -199,7 +185,7 @@ const generateEvent = async (req, res, next) => {
     req.on("data", (chunk) => chunks.push(chunk));
     req.on("end", () => {
       const pdfBuffer = Buffer.concat(chunks);
-      // Save or process the PDF
+
       console.log("PDF received", pdfBuffer);
       res.json({ message: "PDF uploaded successfully" });
     });

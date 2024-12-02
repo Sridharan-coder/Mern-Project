@@ -48,25 +48,21 @@ const Generator = () => {
 
   const handleGeneratePDF = async (event) => {
     event.preventDefault();
-  
-    // Get the form element
     const form = event.target.closest("form");
-  
-    // Extract form data
+
     const data = new FormData(form);
     const formValues = Object.fromEntries(data.entries());
   
-    // Create PDF document
+
     const doc = new jsPDF();
     Object.entries(formValues).forEach(([key, value], index) => {
       doc.text(20, 20 + index * 10, `${key}: ${value}`);
     });
   
-    // Convert PDF to Blob
+
     const pdfBlob = doc.output("blob");
     const file = new File([pdfBlob], "form-data.pdf", { type: "application/pdf" });
-  
-    // Prepare FormData
+
     const formData = new FormData();
     formData.append("file", file);
   
@@ -88,14 +84,14 @@ const Generator = () => {
   const handleGenerateExcel = async (event) => {
     event.preventDefault();
   
-    // Get the form element
+
     const form = event.target.closest("form");
   
-    // Extract form data
+
     const data = new FormData(form);
     const formValues = Object.fromEntries(data.entries());
   
-    // Create Excel file
+
     const ws = XLSX.utils.json_to_sheet([formValues]);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "FormData");
@@ -106,7 +102,7 @@ const Generator = () => {
       type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
     });
   
-    // Prepare FormData
+
     const formData = new FormData();
     formData.append("file", file);
   

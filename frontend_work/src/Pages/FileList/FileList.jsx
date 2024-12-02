@@ -60,17 +60,16 @@ const FileList = ({ file }) => {
     try {
       axios
         .get(`http://localhost:3320/download/${fileName}`, {
-          responseType: "blob", // Important for binary data
+          responseType: "blob",
         })
         .then((response) => {
-          // Create a URL for the file blob
           const url = window.URL.createObjectURL(new Blob([response.data]));
           const link = document.createElement("a");
           link.href = url;
-          link.setAttribute("download", fileName); // Set the file name for download
+          link.setAttribute("download", fileName); 
           document.body.appendChild(link);
           link.click();
-          document.body.removeChild(link); // Cleanup the DOM
+          document.body.removeChild(link);
         })
         .catch((error) => {
           console.error("Error downloading file:", error);
@@ -88,11 +87,9 @@ const FileList = ({ file }) => {
       .post("http://localhost:3320/sendEmail", { fileName })
       .then((response) => {
         console.log("Email sent successfully:", response);
-        // Optionally show a success message to the user
       })
       .catch((error) => {
         console.error("Error sending email:", error);
-        // Optionally show an error message to the user
       });
   };
 

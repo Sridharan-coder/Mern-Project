@@ -45,10 +45,10 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
 const transporter = nodemailer.createTransport({
-  service: "gmail", // You can replace it with any service you use
+  service: "gmail", 
   auth: {
-    user: "sridharan.r@mitrahsoft.com", // Use your email address
-    pass: "Sabeswaran1999r@", // Use your email password or an app-specific password
+    user: "sridharan.r@mitrahsoft.com", 
+    pass: "Sabeswaran1999r@", 
   },
 });
 
@@ -56,26 +56,26 @@ app.post("/sendEmail", (req, res) => {
   const { fileName } = req.body;
   const filePath = path.join(__dirname, "uploads", fileName);
 
-  // Check if file exists
+  
   if (!fs.existsSync(filePath)) {
     return res.status(404).send("File not found");
   }
 
-  // Define email options
+  
   const mailOptions = {
-    from: "sridharan.r@mitrahsoft.com", // Sender address
-    to: "sridharan2001r@mitrahsoft.com", // Receiver address
-    subject: "Here is the file you requested", // Subject line
-    text: "Please find the attached file.", // Plain text body
+    from: "sridharan.r@mitrahsoft.com", 
+    to: "sridharan2001r@mitrahsoft.com", 
+    subject: "Just Checking", 
+    text: "Attaching the file", 
     attachments: [
       {
         filename: fileName,
-        path: filePath, // Path to the file
+        path: filePath, 
       },
     ],
   };
 
-  // Send email with Nodemailer
+  
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error("Error sending email:", error);
